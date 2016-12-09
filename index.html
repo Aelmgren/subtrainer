@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Video.js Transcript</title>
+
+  <link href="http://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet">
+  <link href="subtrainer.css" title="subtrainer" rel="stylesheet">
+  <!-- <link href="css/videojs-transcript2.css" title="Example 2" rel="alternate stylesheet">
+  <link href="css/videojs-transcript3.css" title="Example 3" rel="alternate stylesheet"> -->
+  <style>
+    body {
+      font-family:'Roboto', Arial, sans-serif;
+    }
+    .info {
+      background-color: #eee;
+      border: thin solid #333;
+      border-radius: 3px;
+      padding: 0 5px;
+      text-align: center;
+    }
+  </style>
+  <script src="http://vjs.zencdn.net/5.6.0/video.js"></script>
+
+  <script src="./dist/videojs-transcript.js"></script>
+  </head>
+  <body style="
+    background: #293344;
+">
+  <div class="header" style="
+    height: 100px;
+    display: inline-flex;
+    float: right;
+">
+    <div class="logo" style="
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+">SubTrainer
+    </div>
+  <div class="uploadCtrl" style="
+    float: right;
+    margin: 20px;
+    display: inline;
+    left: 83px;
+    position: relative;
+    color: white;
+">
+<div id="message"></div>
+<input type="file" accept="video/*">
+</div>
+    <div class="faq">FAQ's</div>
+    <div style="margin: 20px;"><a href="https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en">Download Rikaikun Translator Chrome Extension</a>
+</div>
+</div>
+
+
+  <div class="video-container" style="width: 100%;height: 100%;">
+    <div class="dropDiv">
+      <div class="dropLinesDiv">
+        <div id="dropText">
+          Drop a video locally or from your browser here.
+        </div>
+      <video id="video" class="video-js vjs-default-skin" controls>
+      <p>
+        Your browser doesn't support video. Please <a href="http://browsehappy.com/">upgrade your browser</a> to see the example.
+      </p>
+      <source src="http://www.openbeelden.nl/files/92/104101.ed_hd.mp4" type="video/mp4">
+      <source src="http://www.openbeelden.nl/files/92/104105.ed_hd.webm" type="video/webm">
+      <track kind="captions" src="./captions/captions.en.vtt" srclang="en" label="English" default>
+      <track kind="captions" src="./captions/captions.sv.vtt" srclang="sv" label="Swedish">
+      <track kind="captions" src="./captions/captions.ru.vtt" srclang="ru" label="Russian">
+      <track kind="captions" src="./captions/captions.ja.vtt" srclang="ja" label="Japanese">
+      <track kind="captions" src="./captions/captions.ar.vtt" srclang="ar" label="Arabic">
+    </video>
+  </div>
+  </div>
+
+  <div class="transcriptDrop">
+    <div class="transcriptDropLines">
+          <div id="transcript"></div>
+    </div>
+  </div>
+</div>
+  <script>
+      var video = videojs('video').ready(function(){
+
+          // fire up the plugin
+          var transcript = this.transcript();
+
+          var transcriptContainer = document.querySelector('#transcript');
+          transcriptContainer.appendChild(transcript.el());
+      });
+   (function localFileVideoPlayer() {
+	'use strict'
+  var URL = window.URL || window.webkitURL
+  var displayMessage = function (message, isError) {
+    var element = document.querySelector('#message')
+    element.innerHTML = message
+    element.className = isError ? 'error' : 'info'
+  }
+  var playSelectedFile = function (event) {
+    var file = this.files[0]
+    var type = file.type
+    var videoNode = document.querySelector('.vjs-tech');
+    var canPlay = videoNode.canPlayType(type)
+    if (canPlay === '') canPlay = 'no'
+    var message = 'Can play type "' + type + '": ' + canPlay
+    var isError = canPlay === 'no'
+    displayMessage(message, isError)
+
+    if (isError) {
+      return
+    }
+
+    var fileURL = URL.createObjectURL(file)
+    videoNode.src = fileURL
+  }
+  var inputNode = document.querySelector('input')
+  inputNode.addEventListener('change', playSelectedFile, false)
+    })();
+</script>
+
+
+</body></html>

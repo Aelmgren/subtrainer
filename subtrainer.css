@@ -1,0 +1,115 @@
+#transcript {
+  font-family: 'Roboto',Arial, sans-serif;
+  display: inline-block;
+  float: right;
+  width: 30%;
+  height: 500px;
+  background: #4c5666;
+}
+#transcript-video {
+  height:500px;
+}
+
+.video-container {
+  float:left;
+}
+
+
+.dropDiv {
+
+  height: 500px;
+  float: left;
+  width: 68%;
+  position: absolute;
+}
+.dropLinesDiv {
+  border: 20px dashed #4c5666;
+  height: 372px;
+  float: left;
+  width: 76%;
+  position: absolute;
+  border-radius: 76px;
+  margin: 39px;
+}
+#dropText {
+  position: relative;
+  line-height: 363px;
+  text-align: center;
+  vertical-align: middle;
+  color: #4c5666;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.video-js {
+  float: left;
+  width: 120%;
+  height: 500px;
+  position: relative;
+  bottom: 420px;
+  left: -20px;
+  /* display: none; */
+}
+.vjs-tech {
+  position: relative;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+}
+
+.transcript-header {
+  display:none;
+}
+.transcript-selector {
+  display:none;
+}
+.transcript-body {
+  height: 100%;
+  overflow-y: scroll;
+  color:white;
+}
+
+.transcript-line {
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.transcript-timestamp {
+  position: absolute;
+  display: inline-block;
+  color: #333;
+  width: 50px;
+}
+
+.transcript-text {
+  display: block;
+  margin-left: 50px;
+}
+
+.transcript-line:hover {
+  background-color: #455A64;
+}
+
+.transcript-line.is-active {
+  background-color: #607D8B
+;
+}
+.header a {
+  color:#CFD8DC;
+
+}
+.logo{
+  margin:20px;
+  color:#CFD8DC;
+}
+.faq{
+ color: #CFD8DC;
+ margin:20px;
+}
+.vjs-texttrack-settings {
+  display: none;
+}
